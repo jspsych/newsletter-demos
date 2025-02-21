@@ -15,20 +15,14 @@
       }
     });
 
-    const demo0 = {
-        type: jsPsychHtmlSwipeResponse,
-        stimulus: 'Which of the following colors is your favorite?'
-    }
-
-    const demo1 = {
+    const demo = {
         type: jsPsychHtmlSwipeResponse,
         stimulus: 'Which of the following colors is your favorite?',
-        button_choices: ['Blue','Green', 'Aquamarine'],
+        button_choices: ['Blue','Green'],
         button_html: ['<button class="jspsych-btn">%choice%</button>', 
-                      '<button class="jspsych-btn">%choice%</button>',
                       '<button class="jspsych-btn">%choice%</button>']
     }
 
-    jsPsych.run([demo0, demo1])
+    jsPsych.run([demo])
   </script>
 </html>
