@@ -14,7 +14,8 @@
     const demo = {
         type: jsPsychHtmlSwipeResponse,
         stimulus: 'sample text',
-        button_html: ['<button class="jspsych-btn">option</button>']
+        button_choices: ['a','b'],
+        button_html: ['<button class="jspsych-btn">%choice%</button>', '<button class="jspsych-btn">%choice%</button>']
     }
 
     jsPsych.run([demo])
