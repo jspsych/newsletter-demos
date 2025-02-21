@@ -8,10 +8,15 @@
   </head>
   <body></body>
   <script>
-    const jsPsych = initJsPsych();
+    const jsPsych = initJsPsych({
+      on_finish: function(){
+        jsPsych.data.displayData();
+      }
+    });
 
     const demo = {
         type: jsPsychHtmlKeyboardSlider,
+        prompt: "On a scale of 1-10, how cool is this slider?"
     }
 
     jsPsych.run([demo])
