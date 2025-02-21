@@ -15,7 +15,12 @@
       }
     });
 
-    const demo = {
+    const demo0 = {
+        type: jsPsychHtmlSwipeResponse,
+        stimulus: 'Which of the following colors is your favorite?'
+    }
+
+    const demo1 = {
         type: jsPsychHtmlSwipeResponse,
         stimulus: 'Which of the following colors is your favorite?',
         button_choices: ['Blue','Green', 'Aquamarine'],
@@ -24,6 +29,6 @@
                       '<button class="jspsych-btn">%choice%</button>']
     }
 
-    jsPsych.run([demo])
+    jsPsych.run([demo0, demo1])
   </script>
 </html>
