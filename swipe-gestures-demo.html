@@ -3,7 +3,7 @@
   <head>
     <title>Swipe Gesture Demo</title>
     <script src="https://unpkg.com/jspsych@8.0.3"></script>
-    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-preload"></script>
     <script src="https://unpkg.com/@jspsych-contrib/plugin-html-swipe-response"></script>
     <link href="https://unpkg.com/jspsych@8.0.3/css/jspsych.css" rel="stylesheet" type="text/css" />
   </head>
@@ -15,10 +15,18 @@
       }
     });
 
-    const demo = {
-        type: jsPsychHtmlSwipeResponse
+    const preload = {
+        type: jsPsychPreload,
+        images: ['img/blue.png']
+        
     }
 
-    jsPsych.run([demo])
+
+    const demo = {
+        type: jsPsychHtmlSwipeResponse,
+        stimulus: `<img src='img/blue.png'></img>`
+    }
+
+    jsPsych.run([preload, demo])
   </script>
 </html>
