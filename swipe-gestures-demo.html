@@ -16,11 +16,7 @@
     });
 
     const demo = {
-        type: jsPsychHtmlSwipeResponse,
-        stimulus: 'Which of the following colors is your favorite?',
-        button_choices: ['Blue','Green'],
-        button_html: ['<button class="jspsych-btn">%choice%</button>', 
-                      '<button class="jspsych-btn">%choice%</button>']
+        type: jsPsychHtmlSwipeResponse
     }
 
     jsPsych.run([demo])
