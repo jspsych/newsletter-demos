@@ -18,13 +18,13 @@
     const preload = {
         type: jsPsychPreload,
         images: ['img/blue.png']
-        
     }
 
 
     const demo = {
         type: jsPsychHtmlSwipeResponse,
-        stimulus: `<img src='img/blue.png'></img>`
+        stimulus: `<img src='img/blue.png'></img>`,
+        button_html: []
     }
 
     jsPsych.run([preload, demo])
