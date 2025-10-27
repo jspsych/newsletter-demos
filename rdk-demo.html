@@ -31,6 +31,18 @@
         prompt: "<p>Press any key to continue.</p>"
     }
 
+    const exit = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: `
+            <h3 style='padding: 0 2em;'>
+                This concludes the demo! Now that you've observed a few parameters in action,
+                feel free to combine them however you like in your own experiments. You can
+                also see the data recorded from each RDK trial on exiting the screen.
+            </h3>
+        `,
+        prompt: "<p>Press any key to see data and end the demo.</p>"
+    }
+
     const coherence_introduction = {
         type: jsPsychHtmlKeyboardResponse,
         stimulus: `
@@ -218,7 +230,7 @@
         timeline: [opposite_introduction, opposite_screens]
     }
 
-    timeline.push(introduction, coherence_demo, direction_demo, opposite_demo, rdk_type_demo);
+    timeline.push(introduction, coherence_demo, direction_demo, opposite_demo, rdk_type_demo, exit);
 
     jsPsych.run([timeline]);
   </script>
