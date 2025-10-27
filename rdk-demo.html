@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Dot Kinematogram Demo</title>
+    <script src="https://unpkg.com/jspsych@8.0.3"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-preload"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response"></script>
+    <script src="https://unpkg.com/@jspsych-contrib/plugin-rdk@2.0.0"></script>
+    <link href="https://unpkg.com/jspsych@8.0.3/css/jspsych.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body></body>
+  <script>
+    const jsPsych = initJsPsych({
+      on_finish: function(){
+        jsPsych.data.displayData();
+      }
+    });
+
+    var timeline = [];
+
+    const coherence_instructions = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: () => `
+            <h3>The next screen shows a dot kinematogram with a coherence of ${jsPsych.evaluateTimelineVariable('coherence')}.
+                This means only ${jsPsych.evaluateTimelineVariable('coherence')} of dots are assigned as "signal" dots</h3>
+        `,
+        prompt: "<p>Press any key to continue.</p>"
+    }
+    const coherence = {
+        type: jsPsychRdk,
+        choices: ['f','j'],
+        correct_choice: 'j',
+        trial_duration: -1,
+        coherence: jsPsych.timelineVariable('coherence'),
+    }
+
+    const rdk_type_instructions = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: () => `
+            <h3>In the next screen, dots are assigned as "signal" or "noise" ${jsPsych.evaluateTimelineVariable('signal')},
+                and noise dots ${jsPsych.evaluateTimelineVariable('noise')}</h3>
+        `,
+        prompt: "<p>Press any key to continue.</p>"
+    }
+    const rdk_type = {
+        type: jsPsychRdk,
+        choices: ['f','j'],
+        correct_choice: 'j',
+        trial_duration: -1,
+        RDK_type: jsPsych.timelineVariable('RDK_type'),
+    }
+
+    const direction_instructions = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: () => `
+            <h3>The next screen features signal dots moving ${jsPsych.evaluateTimelineVariable('direction')}</h3>
+        `,
+        prompt: "<p>Press any key to continue.</p>"
+    }
+    const direction = {
+        type: jsPsychRdk,
+        choices: ['f','j'],
+        correct_choice: 'j',
+        trial_duration: -1,
+        coherent_direction: jsPsych.timelineVariable('coherent_direction'),
+    }
+
+    const opposite_instructions = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: () => `
+            <h3>In the next screen, ${jsPsych.evaluateTimelineVariable('opposite_coherence')} of noise dots 
+                are assigned to move in the opposite direction of the signal dots</h3>
+        `,
+        prompt: "<p>Press any key to continue.</p>"
+    }
+    const opposite = {
+        type: jsPsychRdk,
+        choices: ['f','j'],
+        correct_choice: 'j',
+        trial_duration: -1,
+        opposite_coherence: jsPsych.timelineVariable('opposite_coherence'),
+    }
+
+    const demo_coherence = {
+        timeline: [coherence_instructions, coherence],
+        timeline_variables: [
+            { coherence: 0 },
+            { coherence: 0.1 },
+            { coherence: 0.3 },
+            { coherence: 0.5 },
+        ]
+    }
+    const rdk_type_demo = {
+        timeline: [rdk_type_instructions, rdk_type],
+        timeline_variables: [{ 
+                RDK_type: 1, 
+                signal: 'consistently across all frames',
+                noise: 'appear in random locations each frame'
+            },{ 
+                RDK_type: 2, 
+                signal: 'consistently across all frames',
+                noise: 'move in random directions each frame'
+            },{ 
+                RDK_type: 3, 
+                signal: 'consistently across all frames',
+                noise: 'move in an incoherent but consistent direction across all frames'
+            },{ 
+                RDK_type: 4, 
+                signal: 'randomly each frame',
+                noise: 'appear in random locations'
+            },{ 
+                RDK_type: 5, 
+                signal: 'randomly each frame',
+                noise: 'move in random directions' 
+            },{ 
+                RDK_type: 6, 
+                signal: 'randomly each frame',
+                noise: 'move in an incoherent but consistent direction across all frames'
+            },
+        ]
+    }
+    const direction_demo = {
+        timeline: [direction_instructions, direction],
+        timeline_variables: [
+            { coherent_direction: 0, direction: 'to the right' },
+            { coherent_direction: 90, direction: 'up' },
+            { coherent_direction: 180, direction: 'to the left'},
+            { coherent_direction: 270, direction: 'down' },
+        ]
+    }
+    const opposite_demo = {
+        timeline: [opposite_instructions, opposite],
+        timeline_variables: [
+            { opposite_coherence: 0 },
+            { opposite_coherence: 0.1 },
+            { opposite_coherence: 0.2},
+            { opposite_coherence: 0.3},
+        ]
+    }
+
+    timeline.push(demo_coherence, direction_demo, opposite_demo, rdk_type_demo);
+
+    jsPsych.run([timeline]);
+  </script>
+</html>
