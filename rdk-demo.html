@@ -123,11 +123,11 @@
         stimulus: `
             <h3 style='padding: 0 2em;'>
                 Next, we'll demo the "opposite_coherence" parameter. This specifies the proportion of
-                total dots that move in the opposite direction of the signal dots, without affecting 
-                the proportion of signal dots. The proportion is NOT relative to the amount of signal 
-                or noise dots. For instance, an opposite coherence of 0.1 will affect 30 out of 300 dots 
-                in an RDK of coherence 0.5, rather than 15 out of 150 noise dots. The next few RDKs will
-                keep to a direction of 0 degrees (to the right) and a coherence of 0.5.
+                total dots that move in the opposite direction of the signal dots. Like coherence, this
+                parameter is relative to the total number of dots, not the amount of signal or noise dots. 
+                For instance, an opposite coherence of 0.1 will affect 30 out of 300 dots in an RDK of 
+                coherence 0.5, rather than 15 out of 150 noise dots. The next few RDKs will keep to a 
+                direction of 0 degrees (to the right) and a coherence of 0.5.
             </h3>
         `,
         prompt: "<p>Press any key to continue.</p>"
