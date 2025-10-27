@@ -104,7 +104,8 @@
         type: jsPsychHtmlKeyboardResponse,
         stimulus: () => `
             <h3 style='padding: 0 2em;'>
-                The next screen features signal dots moving ${jsPsych.evaluateTimelineVariable('direction')}.
+                The next screen features signal dots moving at ${jsPsych.evaluateTimelineVariable('coherent_direction')} degrees,
+                or ${jsPsych.evaluateTimelineVariable('direction')}.
             </h3>
         `,
         prompt: "<p>Press any key to continue.</p>"
@@ -122,8 +123,11 @@
         stimulus: `
             <h3 style='padding: 0 2em;'>
                 Next, we'll demo the "opposite_coherence" parameter. This specifies the proportion of
-                noise dots that move in the opposite direction of the signal dots. For the next few RDKs,
-                we'll go back to a direction of 0 degrees (to the right) and keep the same coherence of 0.5.
+                total dots that move in the opposite direction of the signal dots, without affecting 
+                the proportion of signal dots. The proportion is NOT relative to the amount of signal 
+                or noise dots. For instance, an opposite coherence of 0.1 will affect 30 out of 300 dots 
+                in an RDK of coherence 0.5, rather than 15 out of 150 noise dots. The next few RDKs will
+                keep to a direction of 0 degrees (to the right) and a coherence of 0.5.
             </h3>
         `,
         prompt: "<p>Press any key to continue.</p>"
@@ -132,8 +136,7 @@
         type: jsPsychHtmlKeyboardResponse,
         stimulus: () => `
             <h3 style='padding: 0 2em;'>
-                In the next screen, ${jsPsych.evaluateTimelineVariable('opposite_coherence')} of noise dots 
-                are assigned to move in the opposite direction of the signal dots.
+                The next screen will demonstrate an opposite coherence of ${jsPsych.evaluateTimelineVariable('opposite_coherence')}.
             </h3>
         `,
         prompt: "<p>Press any key to continue.</p>"
@@ -194,9 +197,9 @@
         timeline: [direction_instructions, direction],
         timeline_variables: [
             { coherent_direction: 0, direction: 'to the right' },
-            { coherent_direction: 90, direction: 'up' },
+            { coherent_direction: 90, direction: 'straight up' },
             { coherent_direction: 180, direction: 'to the left'},
-            { coherent_direction: 270, direction: 'down' },
+            { coherent_direction: 270, direction: 'straight down' },
         ]
     }
     const direction_demo = {
