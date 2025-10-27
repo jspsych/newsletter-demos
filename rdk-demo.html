@@ -18,70 +18,135 @@
 
     var timeline = [];
 
+    const introduction = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: `
+            <h3 style='padding: 0 2em;'>
+                You're about to get a quick demo of jsPsych's Random Dot Kinematogram plugin, 
+                courtesy of Rajanandan, Lau, and Odegaard. While not exhaustive, the demo will 
+                walk you through a few key parameters in the plugin. Press any key to continue
+                from each screen, including the RDK displays.
+            </h3>
+        `,
+        prompt: "<p>Press any key to continue.</p>"
+    }
+
+    const coherence_introduction = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: `
+            <h3 style='padding: 0 2em;'>
+                The first parameter we'll look at is "coherence." This determines the proportion of dots
+                assigned as signal dots at any given time.
+            </h3>
+        `,
+        prompt: "<p>Press any key to continue.</p>"
+    }
     const coherence_instructions = {
         type: jsPsychHtmlKeyboardResponse,
         stimulus: () => `
-            <h3>The next screen shows a dot kinematogram with a coherence of ${jsPsych.evaluateTimelineVariable('coherence')}.
-                This means only ${jsPsych.evaluateTimelineVariable('coherence')} of dots are assigned as "signal" dots</h3>
+            <h3 style='padding: 0 2em;'>
+                The next screen shows a dot kinematogram with a coherence of ${jsPsych.evaluateTimelineVariable('coherence')}.
+            </h3>
         `,
         prompt: "<p>Press any key to continue.</p>"
     }
     const coherence = {
         type: jsPsychRdk,
-        choices: ['f','j'],
-        correct_choice: 'j',
+        choices: ['ALL_KEYS'],
+        correct_choice: ['ALL_KEYS'],
         trial_duration: -1,
         coherence: jsPsych.timelineVariable('coherence'),
     }
 
+    const rdk_type_introduction = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: `
+            <h3 style='padding: 0 2em;'>
+                This last parameter, "RDK_type," most dramatically influences the RDK's behavior.
+                It features six different settings between 1 and 6. Each setting determines (1)
+                how signal dots are assigned, and (2) how noise dots behave. For these last RDKs,
+                we'll keep a direction of 0 degrees, a coherence of 0.5, and an opposite coherence of 0.
+            </h3>
+        `,
+        prompt: "<p>Press any key to continue.</p>"
+    }
     const rdk_type_instructions = {
         type: jsPsychHtmlKeyboardResponse,
         stimulus: () => `
-            <h3>In the next screen, dots are assigned as "signal" or "noise" ${jsPsych.evaluateTimelineVariable('signal')},
-                and noise dots ${jsPsych.evaluateTimelineVariable('noise')}</h3>
+            <h3 style='padding: 0 2em;'>
+                In the next screen, dots are assigned as "signal" or "noise" ${jsPsych.evaluateTimelineVariable('signal')},
+                and noise dots ${jsPsych.evaluateTimelineVariable('noise')}.
+            </h3>
         `,
         prompt: "<p>Press any key to continue.</p>"
     }
     const rdk_type = {
         type: jsPsychRdk,
-        choices: ['f','j'],
-        correct_choice: 'j',
+        choices: ['ALL_KEYS'],
+        correct_choice: ['ALL_KEYS'],
         trial_duration: -1,
         RDK_type: jsPsych.timelineVariable('RDK_type'),
     }
 
+    const direction_introduction = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: `
+            <h3 style='padding: 0 2em;'>
+                Next, we'll demo the direction parameter, which controls the direction signal dots move in.
+                This parameter is specified in degrees, with 0 degrees pointing to the right of the screen,
+                and each degree shifting the direction counterclockwise. The next few RDKs will all have
+                a coherence of 0.5.
+            </h3>
+        `,
+        prompt: "<p>Press any key to continue.</p>"
+    }
     const direction_instructions = {
         type: jsPsychHtmlKeyboardResponse,
         stimulus: () => `
-            <h3>The next screen features signal dots moving ${jsPsych.evaluateTimelineVariable('direction')}</h3>
+            <h3 style='padding: 0 2em;'>
+                The next screen features signal dots moving ${jsPsych.evaluateTimelineVariable('direction')}.
+            </h3>
         `,
         prompt: "<p>Press any key to continue.</p>"
     }
     const direction = {
         type: jsPsychRdk,
-        choices: ['f','j'],
-        correct_choice: 'j',
+        choices: ['ALL_KEYS'],
+        correct_choice: ['ALL_KEYS'],
         trial_duration: -1,
         coherent_direction: jsPsych.timelineVariable('coherent_direction'),
     }
 
+    const opposite_introduction = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: `
+            <h3 style='padding: 0 2em;'>
+                Next, we'll demo the "opposite_coherence" parameter. This specifies the proportion of
+                noise dots that move in the opposite direction of the signal dots. For the next few RDKs,
+                we'll go back to a direction of 0 degrees (to the right) and keep the same coherence of 0.5.
+            </h3>
+        `,
+        prompt: "<p>Press any key to continue.</p>"
+    }
     const opposite_instructions = {
         type: jsPsychHtmlKeyboardResponse,
         stimulus: () => `
-            <h3>In the next screen, ${jsPsych.evaluateTimelineVariable('opposite_coherence')} of noise dots 
-                are assigned to move in the opposite direction of the signal dots</h3>
+            <h3 style='padding: 0 2em;'>
+                In the next screen, ${jsPsych.evaluateTimelineVariable('opposite_coherence')} of noise dots 
+                are assigned to move in the opposite direction of the signal dots.
+            </h3>
         `,
         prompt: "<p>Press any key to continue.</p>"
     }
     const opposite = {
         type: jsPsychRdk,
-        choices: ['f','j'],
-        correct_choice: 'j',
+        choices: ['ALL_KEYS'],
+        correct_choice: ['ALL_KEYS'],
         trial_duration: -1,
         opposite_coherence: jsPsych.timelineVariable('opposite_coherence'),
     }
 
-    const demo_coherence = {
+    const coherence_screens = {
         timeline: [coherence_instructions, coherence],
         timeline_variables: [
             { coherence: 0 },
@@ -90,7 +155,10 @@
             { coherence: 0.5 },
         ]
     }
-    const rdk_type_demo = {
+    const coherence_demo = {
+        timeline: [coherence_introduction, coherence_screens]
+    }
+    const rdk_type_screens = {
         timeline: [rdk_type_instructions, rdk_type],
         timeline_variables: [{ 
                 RDK_type: 1, 
@@ -119,7 +187,10 @@
             },
         ]
     }
-    const direction_demo = {
+    const rdk_type_demo = {
+        timeline: [rdk_type_introduction, rdk_type_screens]
+    }
+    const direction_screens = {
         timeline: [direction_instructions, direction],
         timeline_variables: [
             { coherent_direction: 0, direction: 'to the right' },
@@ -128,7 +199,10 @@
             { coherent_direction: 270, direction: 'down' },
         ]
     }
-    const opposite_demo = {
+    const direction_demo = {
+        timeline: [direction_introduction, direction_screens]
+    }
+    const opposite_screens = {
         timeline: [opposite_instructions, opposite],
         timeline_variables: [
             { opposite_coherence: 0 },
@@ -137,8 +211,11 @@
             { opposite_coherence: 0.3},
         ]
     }
+    const opposite_demo = {
+        timeline: [opposite_introduction, opposite]
+    }
 
-    timeline.push(demo_coherence, direction_demo, opposite_demo, rdk_type_demo);
+    timeline.push(introduction, coherence_demo, direction_demo, opposite_demo, rdk_type_demo);
 
     jsPsych.run([timeline]);
   </script>
