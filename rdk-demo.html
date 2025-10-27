@@ -52,8 +52,8 @@
     }
     const coherence = {
         type: jsPsychRdk,
-        choices: ['ALL_KEYS'],
-        correct_choice: ['ALL_KEYS'],
+        choices: "ALL_KEYS",
+        correct_choice: "ALL_KEYS",
         trial_duration: -1,
         coherence: jsPsych.timelineVariable('coherence'),
     }
@@ -82,8 +82,8 @@
     }
     const rdk_type = {
         type: jsPsychRdk,
-        choices: ['ALL_KEYS'],
-        correct_choice: ['ALL_KEYS'],
+        choices: "ALL_KEYS",
+        correct_choice: "ALL_KEYS",
         trial_duration: -1,
         RDK_type: jsPsych.timelineVariable('RDK_type'),
     }
@@ -94,7 +94,7 @@
             <h3 style='padding: 0 2em;'>
                 Next, we'll demo the direction parameter, which controls the direction signal dots move in.
                 This parameter is specified in degrees, with 0 degrees pointing to the right of the screen,
-                and each degree shifting the direction counterclockwise. The next few RDKs will all have
+                and each degree shifting the direction counterclockwise. The next few RDKs will all keep
                 a coherence of 0.5.
             </h3>
         `,
@@ -111,8 +111,8 @@
     }
     const direction = {
         type: jsPsychRdk,
-        choices: ['ALL_KEYS'],
-        correct_choice: ['ALL_KEYS'],
+        choices: "ALL_KEYS",
+        correct_choice: "ALL_KEYS",
         trial_duration: -1,
         coherent_direction: jsPsych.timelineVariable('coherent_direction'),
     }
@@ -140,8 +140,8 @@
     }
     const opposite = {
         type: jsPsychRdk,
-        choices: ['ALL_KEYS'],
-        correct_choice: ['ALL_KEYS'],
+        choices: "ALL_KEYS",
+        correct_choice: "ALL_KEYS",
         trial_duration: -1,
         opposite_coherence: jsPsych.timelineVariable('opposite_coherence'),
     }
@@ -212,7 +212,7 @@
         ]
     }
     const opposite_demo = {
-        timeline: [opposite_introduction, opposite]
+        timeline: [opposite_introduction, opposite_screens]
     }
 
     timeline.push(introduction, coherence_demo, direction_demo, opposite_demo, rdk_type_demo);
