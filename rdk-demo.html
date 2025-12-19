@@ -38,27 +38,26 @@
             <p style='padding: 0 8em;'>
                 Thanks for your time! You can also see the data recorded from each RDK trial on exiting this screen.</p>
         `,
-        prompt: "<p>Press any key to see data and end the demo.</p>"
+        prompt: "<p>Press any key to see data and end the demo</p>"
     }
 
     const coherence_introduction = {
         type: jsPsychHtmlKeyboardResponse,
         stimulus: `
             <h3 style='padding: 0 8em;'>
-                The first parameter we'll look at is "coherence."</h3>
+                The first parameter we'll look at is "coherence"</h3>
             <p style='padding: 0 8em;'>
-                This determines the proportion of dots assigned as signal dots</p>
+                This determines the proportion of dots assigned as signal dots.</p>
         `,
-        prompt: "<p>Press any key to continue.</p>"
+        prompt: "<p>Press any key to continue</p>"
     }
     const coherence_instructions = {
         type: jsPsychHtmlKeyboardResponse,
         stimulus: () => `
             <h3 style='padding: 0 8em;'>
-                The next screen has coherence set to ${jsPsych.evaluateTimelineVariable('coherence')}.
-            </h3>
+                The next screen has coherence set to ${jsPsych.evaluateTimelineVariable('coherence')}</h3>
         `,
-        prompt: "<p>Press any key to continue.</p>"
+        prompt: "<p>Press any key to continue</p>"
     }
     const coherence = {
         type: jsPsychRdk,
@@ -72,13 +71,13 @@
         type: jsPsychHtmlKeyboardResponse,
         stimulus: `
             <h3 style='padding: 0 8em;'>
-                This last parameter, "RDK_type," most dramatically influences the RDK's behavior.</h3>
+                This last parameter, "RDK_type," most dramatically changes the RDK</h3>
             <p style='padding: 0 8em;'>
                 It takes values between 1 and 6.</p>
             <p style='padding: 0 8em;'> 
                 Each determines (1) if signal dot assignments change, and (2) how noise dots behave.</p>
         `,
-        prompt: "<p>Press any key to continue.</p>"
+        prompt: "<p>Press any key to continue</p>"
     }
     const rdk_type_instructions = {
         type: jsPsychHtmlKeyboardResponse,
@@ -86,11 +85,11 @@
             <h3 style='padding: 0 8em;'>
                 The next screen has RDK_type set to ${jsPsych.evaluateTimelineVariable('RDK_type')}</h3>
             <p style='padding: 0 8em;'> 
-                (1) Signal dot assignments ${jsPsych.evaluateTimelineVariable('signal')}</p>
+                (1) Signal dot assignments ${jsPsych.evaluateTimelineVariable('signal')}.</p>
             <p style='padding: 0 8em;'>
                 (2) Noise dots ${jsPsych.evaluateTimelineVariable('noise')}.</p>
         `,
-        prompt: "<p>Press any key to continue.</p>"
+        prompt: "<p>Press any key to continue</p>"
     }
     const rdk_type = {
         type: jsPsychRdk,
@@ -109,17 +108,16 @@
                 This parameter is specified in degrees. 0 degrees points to the right,
                 and each degree shifts the direction counterclockwise.</p>
         `,
-        prompt: "<p>Press any key to continue.</p>"
+        prompt: "<p>Press any key to continue</p>"
     }
     const direction_instructions = {
         type: jsPsychHtmlKeyboardResponse,
         stimulus: () => `
             <h3 style='padding: 0 8em;'>
                 The next screen has direction set to ${jsPsych.evaluateTimelineVariable('coherent_direction')},
-                or ${jsPsych.evaluateTimelineVariable('direction')}.
-            </h3>
+                or ${jsPsych.evaluateTimelineVariable('direction')}</h3>
         `,
-        prompt: "<p>Press any key to continue.</p>"
+        prompt: "<p>Press any key to continue</p>"
     }
     const direction = {
         type: jsPsychRdk,
@@ -133,23 +131,23 @@
         type: jsPsychHtmlKeyboardResponse,
         stimulus: `
             <h3 style='padding: 0 8em;'>
-                Next, we'll demo the "opposite_coherence" parameter.</h3>
+                Next, we'll demo the "opposite_coherence" parameter</h3>
             <p style='padding: 0 8em;'>
                 This sets the proportion of dots moving opposite to the signal dots.</p>
-            <p style='padding: 0 8em;'> This parameter is relative to the total number of dots, not the amount of signal or noise dots. 
+            <p style='padding: 0 8em;'> 
+                This parameter is relative to the total number of dots, not the amount of signal or noise dots. 
                 For instance, an opposite coherence of 0.1 will affect 30 out of 300 dots in an RDK of 
                 coherence 0.5, rather than 15 out of 150 noise dots.</p>
         `,
-        prompt: "<p>Press any key to continue.</p>"
+        prompt: "<p>Press any key to continue</p>"
     }
     const opposite_instructions = {
         type: jsPsychHtmlKeyboardResponse,
         stimulus: () => `
             <h3 style='padding: 0 8em;'>
-                The next screen has opposite_coherence set to ${jsPsych.evaluateTimelineVariable('opposite_coherence')}.
-            </h3>
+                The next screen has opposite_coherence set to ${jsPsych.evaluateTimelineVariable('opposite_coherence')}</h3>
         `,
-        prompt: "<p>Press any key to continue.</p>"
+        prompt: "<p>Press any key to continue</p>"
     }
     const opposite = {
         type: jsPsychRdk,
