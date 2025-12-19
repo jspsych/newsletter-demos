@@ -74,8 +74,9 @@
             <h3 style='padding: 0 8em;'>
                 This last parameter, "RDK_type," most dramatically influences the RDK's behavior.</h3>
             <p style='padding: 0 8em;'>
-                It takes values between 1 and 6. Each value determines 
-                (1) if signal dot assignments change, and (2) how noise dots behave.</p>
+                It takes values between 1 and 6.</p>
+            <p style='padding: 0 8em;'> 
+                Each determines (1) if signal dot assignments change, and (2) how noise dots behave.</p>
         `,
         prompt: "<p>Press any key to continue.</p>"
     }
@@ -85,8 +86,9 @@
             <h3 style='padding: 0 8em;'>
                 The next screen has RDK_type set to ${jsPsych.evaluateTimelineVariable('RDK_type')}</h3>
             <p style='padding: 0 8em;'> 
-                (1) signal dot assignments ${jsPsych.evaluateTimelineVariable('signal')}
-                and (2) noise dots ${jsPsych.evaluateTimelineVariable('noise')}.</p>
+                (1) Signal dot assignments ${jsPsych.evaluateTimelineVariable('signal')}</p>
+            <p style='padding: 0 8em;'>
+                (2) Noise dots ${jsPsych.evaluateTimelineVariable('noise')}.</p>
         `,
         prompt: "<p>Press any key to continue.</p>"
     }
